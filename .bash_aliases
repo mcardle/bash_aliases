@@ -1,0 +1,68 @@
+# PHP Composer
+export PATH="~/.config/composer/vendor/bin/:$PATH"
+
+# Git commands
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit -m"
+alias gb="git branch"
+alias gl="git log --oneline --graph --decorate"
+
+# PHPUnit
+alias pu="vendor/phpunit/phpunit/phpunit"
+
+# Navigation
+alias c="clear"
+alias ..="cd .."
+alias ...="cd ../.."
+alias dir_size="du -hs"
+alias disk_size="df -h"
+
+# APT commands
+alias apps_upgrade="sudo apt update && sudo apt upgrade && sudo apt-get autoremove"
+alias os_upgrade="appUpgrade && sudo apt dist-upgrade && sudo apt-get autoremove && sudo apt install update-manager-core && sudo do-release-upgrade"
+
+# Download
+function download_images_from_url(){
+	local USAGE="Usage option 1:\ndownload_images_from_url https://some-site.com\n\nUsage option 2:\ndownload_images_from_url list.txt list\n"
+
+	if [ ! -z "$1" ] && [ "$1" == "help" ]; then
+		printf "\n$USAGE\n"
+		return
+	fi
+
+	if [ -z "$1" ]; then
+		printf "\nNo URL specified\n\n$USAGE\n"
+		return
+	fi
+
+	if [ ! -z "$2" ] && [ "$2" == "list" ]; then
+		wget -i "$1" -e robots=off -m -r -np -nH -R "index.html*" --user-agent=Mozilla/5.0
+	else
+		wget -e robots=off -m -r -np -nH -nd -R "html,htm,php,asp,aspx,jsp,js,css,scss,sass,less,vue,template,log,env,json,xml,doc,docx,xls,xlsx,pdf,ppt" -A "jpg,png,jpeg,gif,psd,tiff,ai,pjpeg" --user-agent=Mozilla/5.0 "$1"
+	fi
+}
+
+# Strip image urls from html file
+function extract_imageurls_from_file(){
+	if [ ! -f "$1" ]; then
+		return "File does not exist"
+	fi
+
+	if [ ! -z "$2" ]; then
+		cat "$1" | grep -Eoi '<a [^>]+>' | grep -Eo 'href="([^\"])+"' | sed -e 's/href="//' -e 's/"//' >> "$2"
+	else
+		cat "$1" | grep -Eoi '<a [^>]+>' | grep -Eo 'href="([^\"])+"' | sed -e 's/href="//' -e 's/"//'
+	fi
+}
+
+# Homestead (For Laravel Homestead / Vagrant)
+function homestead() {
+    ( cd ~/Homestead && vagrant $* )
+}
+
+# Create PDF from .jpg files in folder (requires pdftk and img2pdf)
+function create_pdf(){
+	ls -1 ./*.jpg | xargs -L1 -I {} img2pdf {} -o {}.pdf
+	pdftk *.pdf cat output combined.pdf
+}
