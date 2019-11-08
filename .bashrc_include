@@ -1,0 +1,29 @@
+# Sass compiler that prefixes css, minifys and convert from SCSS to CSS
+function sassc(){
+	if [ -z "$1" ]; then
+		printf "sassc takes two parameters none given - sassc <input-scss> <output-css>"
+		return
+	fi
+
+	if [ -z "$2" ]; then
+		printf "sassc takes two parameters one given - sassc <input-scss> <output-css>"
+		return
+	fi
+
+	if [ ! -z `command -v node-sass` ]; then
+		npm uninstall -g -q node-sass
+	fi
+
+	if [ -z `command -v sass` ]; then
+		printf "Installing Sass...\n"
+		npm install -g -q sass
+	fi
+    
+    if [ -z `command -v postcss` ]; then
+		printf "Installing PostCSS CLI...\n"
+		npm install -g -q postcss-cli autoprefixer
+	fi
+
+	sass --style=compressed $1 $2
+	postcss "$2" --use autoprefixer -o "$2" # Automatically adds prefixes to the css rules
+}
