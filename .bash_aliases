@@ -1,6 +1,12 @@
 # PHP Composer
 export PATH="~/.config/composer/vendor/bin/:$PATH"
 
+# IF YOU HAVE ANY USERSPECIFIC THINGS YOU WANT TO ADD, JUST PUT THEM IN ~/.bashrc_include 
+# AND IT AUTOMATICALLY BE INCLUDED
+if [ -f ~/.bashrc_include ]; then
+	. ~/.bashrc_include
+fi
+
 # Git commands
 alias gs="git status"
 alias ga="git add"
