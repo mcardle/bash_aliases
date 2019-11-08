@@ -1,3 +1,6 @@
+# PHPUnit
+alias pu="vendor/phpunit/phpunit/phpunit"
+
 # Sass compiler that prefixes css, minifys and convert from SCSS to CSS
 function sassc(){
 	if [ -z "$1" ]; then

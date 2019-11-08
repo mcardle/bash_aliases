@@ -14,15 +14,10 @@ alias gc="git commit -m"
 alias gb="git branch"
 alias gl="git log --oneline --graph --decorate"
 
-# PHPUnit
-alias pu="vendor/phpunit/phpunit/phpunit"
-
 # Navigation
 alias c="clear"
 alias ..="cd .."
 alias ...="cd ../.."
-alias dir_size="du -hs"
-alias disk_size="df -h"
 
 # SYSTEM SHORTCUTS
 alias df="df -Tha --total"					# Human readable root usage
