@@ -18,6 +18,16 @@ alias ...="cd ../.."
 alias dir_size="du -hs"
 alias disk_size="df -h"
 
+# SYSTEM SHORTCUTS
+alias df="df -Tha --total"					# Human readable root usage
+alias du="du -ach | sort -h" 					# Human readable disk usage
+alias free="free -mt" 						# See memory usage
+alias ps="ps auxf" 						# See all processes
+alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"		# Run "psg bash" to get the memory and cpu usage of the bash
+alias mkdir="mkdir -pv"						# Create nested directories and show which ones was created
+alias wget="wget -c"						# Continue if interrupted -c
+alias myip="curl http://ipecho.net/plain; echo"			# My IP
+
 # APT commands
 alias apps_upgrade="sudo apt update && sudo apt upgrade && sudo apt-get autoremove"
 alias os_upgrade="appUpgrade && sudo apt dist-upgrade && sudo apt-get autoremove && sudo apt install update-manager-core && sudo do-release-upgrade"
