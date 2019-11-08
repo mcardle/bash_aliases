@@ -72,11 +72,6 @@ function extract_imageurls_from_file(){
 	fi
 }
 
-# Homestead (For Laravel Homestead / Vagrant)
-function homestead() {
-    ( cd ~/Homestead && vagrant $* )
-}
-
 # Create PDF from .jpg files in folder (requires pdftk and img2pdf)
 function create_pdf(){
 	ls -1 ./*.jpg | xargs -L1 -I {} img2pdf {} -o {}.pdf

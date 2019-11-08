@@ -27,3 +27,8 @@ function sassc(){
 	sass --style=compressed $1 $2
 	postcss "$2" --use autoprefixer -o "$2" # Automatically adds prefixes to the css rules
 }
+
+# Homestead (For Laravel Homestead / Vagrant)
+function homestead() {
+    ( cd ~/Homestead && vagrant $* )
+}
