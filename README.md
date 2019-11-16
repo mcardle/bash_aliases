@@ -6,6 +6,7 @@ The .bash_aliases can be downloaded as a stand-alone file or you could also use 
 - Aliases for Git (I know version control is not used by everybody - but it should).
 - Navigation shortcuts - see the comments in file.
 - System shortcuts - see the comment in file.
+- Renew IP address - this releases the IP and get a new from the router
 - An easy apps_upgrade function for upgrading all apps.
 - An easy os_upgrade function for upgrading the distro.
 - download_images_from_url function which simulate a browser download for grabbing all images on a website.
