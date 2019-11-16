@@ -33,6 +33,12 @@ alias myip="curl http://ipecho.net/plain; echo"			# My IP
 alias apps_upgrade="sudo apt update && sudo apt upgrade && sudo apt-get autoremove"
 alias os_upgrade="appUpgrade && sudo apt dist-upgrade && sudo apt-get autoremove && sudo apt install update-manager-core && sudo do-release-upgrade"
 
+# Release IP and get a new one
+function renew_ip(){
+	sudo dbclient -r
+	sudo dbclient
+}
+
 # Download
 function download_images_from_url(){
 	local USAGE="Usage option 1:\ndownload_images_from_url https://some-site.com\n\nUsage option 2:\ndownload_images_from_url list.txt list\n"
